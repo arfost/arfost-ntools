@@ -1,5 +1,5 @@
 {
-  "name": "node-tools",
+  "name": "arfost-ntools",
   "version": "0.0.1",
   "description": "a little set of tools to use on new projects",
   "main": "index.js",
