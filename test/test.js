@@ -151,5 +151,12 @@ describe('tools - ParamsFromFileOrObject class', function () {
                 'It should have throw an error'
             );
         });
+        it('should throw an error cause undefined params', function () {
+            assert.throws(
+                () => new TestClass(),
+                TypeError,
+                'It should have throw an error'
+            );
+        });
     });
 });

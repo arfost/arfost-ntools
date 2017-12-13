@@ -22,9 +22,6 @@ module.exports.ParamChecker = class {
 
 module.exports.ParamsFromFileOrObject = class ParamsFromFileOrObject extends module.exports.ParamChecker{
     constructor(params){
-        if(!params){
-            throw new TypeError("The class "+this.className+" need a path to a json file, or a json object as params")
-        }
         if(typeof params === 'string'){
             params = require(params)
         }
