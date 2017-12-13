@@ -1,6 +1,6 @@
 # arfost-ntools
 
-[![NPM](https://nodei.co/npm/stealthlog.png?downloads=true&downloadRank=true)](https://nodei.co/npm/arfost-ntools/)
+[![NPM](https://nodei.co/npm/arfost-ntools.png?downloads=true&downloadRank=true)](https://nodei.co/npm/arfost-ntools/)
 
 A set of node js tools intended for me to import in each projects
 If it can be of any use for you, fell free to use it.
