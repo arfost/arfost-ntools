@@ -4,7 +4,7 @@
   "description": "a little set of tools to use on new projects",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/arfost/node-tools/issues"
   },
-  "homepage": "https://github.com/arfost/node-tools#readme"
+  "homepage": "https://github.com/arfost/node-tools#readme",
+  "devDependencies": {
+    "mocha": "^4.0.1"
+  }
 }

@@ -1,5 +1,10 @@
 
-module.exports.paramChecker = class {
+module.exports.ParamChecker = class {
+    constructor(params){
+        this.checkParams(params)
+        this.params = params
+    }
+
     checkParams(params){
         let paramsGood = true;
         for(let param of this.neededParams){
@@ -7,7 +12,7 @@ module.exports.paramChecker = class {
         }
 
         if(!paramsGood)
-            throw "invalid params, needed params are : " + this.neededParams.join(', ')
+            throw new Error("invalid params, needed params are : " + this.neededParams.join(', '))
     }
 
     get neededParams(){
@@ -15,18 +20,15 @@ module.exports.paramChecker = class {
     }
 }
 
-module.exports.paramsFromFileOrObject = class ParamsFromFileOrObject extends module.exports.paramChecker{
+module.exports.ParamsFromFileOrObject = class ParamsFromFileOrObject extends module.exports.ParamChecker{
     constructor(params){
-        super()
         if(!params){
-            throw "The class "+this.className+" need a path to a json file, or a json object as params"
+            throw new Error("The class "+this.className+" need a path to a json file, or a json object as params")
         }
         if(typeof params === 'string'){
             params = require(params)
         }
-        this.checkParams(params)
-
-        this.params = params
+        super(params)
     }
 }
 
