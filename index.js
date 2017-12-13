@@ -6,13 +6,15 @@ module.exports.ParamChecker = class {
     }
 
     checkParams(params){
+        if(!params)
+            throw new TypeError("Undefined params, send a literal object with this properties : " + this.neededParams.join(', '))
         let paramsGood = true;
         for(let param of this.neededParams){
             paramsGood = paramsGood && (typeof params[param] !== 'undefined');
         }
 
         if(!paramsGood)
-            throw new TypeError("invalid params, needed params are : " + this.neededParams.join(', '))
+            throw new TypeError("missing params, needed params are : " + this.neededParams.join(', '))
     }
 
     get neededParams(){
