@@ -1,6 +1,6 @@
 {
   "name": "arfost-ntools",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "a little set of tools to use on new projects",
   "main": "index.js",
   "scripts": {
