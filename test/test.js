@@ -31,9 +31,9 @@ describe('tools - random', function () {
 });
 
 describe('tools - paramChecker class', function () {
-    let testClass;
+    let TestClass;
     before(function initTestClass() {
-        testClass = class TestClass extends ParamChecker {
+        TestClass = class extends ParamChecker {
             //list of needed params
             get neededParams() {
                 return [
@@ -52,36 +52,41 @@ describe('tools - paramChecker class', function () {
     describe('create with good parameters', function () {
         it('should be created', function () {
             assert.doesNotThrow(
-                () => new testClass({
+                () => new TestClass({
                     testParam1: true,
                     testParam2: "pouet",
                     testParam3: "re-pouet"
                 }),
+                TypeError,
                 'Issue with simple creation'
             );
         });
         it('should be created with despite falsy params value', function () {
             assert.doesNotThrow(
-                () => new testClass({
+                () => new TestClass({
                     testParam1: false,
                     testParam2: "",
                     testParam3: 0
-                })
+                }),
+                TypeError,
+                "It should have found parameters despite being falsy"
             );
         });
     }); describe('create with missing/no parameters', function () {
         it('should throw an error', function () {
             assert.throws(
-                () => new testClass({
+                () => new TestClass({
                     testParam1: false,
                     testParam2: ""
                 }),
+                TypeError,
                 'It should have throw an error'
             );
         });
         it('should throw an error', function () {
             assert.throws(
-                () => new testClass(),
+                () => new TestClass(),
+                TypeError,
                 'It should have throw an error'
             );
         });
@@ -90,9 +95,9 @@ describe('tools - paramChecker class', function () {
 
 
 describe('tools - ParamsFromFileOrObject class', function () {
-    let testClass;
+    let TestClass;
     before(function initTestClass() {
-        testClass = class TestClass extends ParamsFromFileOrObject {
+        TestClass = class extends ParamsFromFileOrObject {
             //list of needed params
             get neededParams() {
                 return [
@@ -111,14 +116,15 @@ describe('tools - ParamsFromFileOrObject class', function () {
     describe('create from params files', function () {
         it('should be created correctly from file', function () {
             assert.doesNotThrow(
-                () => new testClass('./test/paramsFileGood.json'),
-                SyntaxError,
+                () => new TestClass('./test/paramsFileGood.json'),
+                TypeError,
                 'Issue with simple creation'
             );
         });
         it('should throw an error', function () {
             assert.throws(
-                () => new testClass('./paramsFileBad.json'),
+                () => new TestClass('./test/paramsFileBad.json'),
+                TypeError,
                 'It should have throw an error'
             );
         });
@@ -126,21 +132,22 @@ describe('tools - ParamsFromFileOrObject class', function () {
     describe('create from params object', function () {
         it('should be created correctly from object', function () {
             assert.doesNotThrow(
-                () => new testClass({
+                () => new TestClass({
                     testParam1: true,
                     testParam2: "pouet",
                     testParam3: "re-pouet"
                 }),
-                SyntaxError,
+                TypeError,
                 'Issue with simple creation'
             );
         });
         it('should throw an error cause a param is missing', function () {
             assert.throws(
-                () => new testClass({
+                () => new TestClass({
                     testParam1: true,
                     testParam2: "pouet"
                 }),
+                TypeError,
                 'It should have throw an error'
             );
         });
